@@ -1,0 +1,115 @@
+
+.learning-layout {
+  display: grid;
+  grid-template-columns: minmax(290px, 360px) minmax(0, 1fr) minmax(250px, 330px);
+  gap: 20px;
+  padding: 20px;
+}
+
+.controls-panel,
+.sample-panel {
+  align-self: start;
+}
+
+.lab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.lab-status {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 235, 190, .72);
+  color: #684923;
+  font-weight: 700;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.metrics-grid article {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+.metrics-grid span {
+  display: block;
+  font-size: .84rem;
+  opacity: .7;
+}
+
+.metrics-grid strong {
+  display: block;
+  font-size: 1.45rem;
+  margin-top: 6px;
+}
+
+.progress-track {
+  height: 14px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(0,0,0,.08);
+  margin: 16px 0 22px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #b26b1e, #e0a33e);
+  transition: width .2s ease;
+}
+
+.weights-box {
+  min-height: 210px;
+  max-height: 360px;
+  overflow: auto;
+  padding: 14px;
+  border-radius: 14px;
+  background: #241f1a;
+  color: #f7ead4;
+  white-space: pre-wrap;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.learning-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.learning-table th,
+.learning-table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  text-align: left;
+}
+
+.sample-summary {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.6);
+}
+
+.feature-list {
+  padding-left: 20px;
+  line-height: 1.65;
+}
+
+@media (max-width: 1100px) {
+  .learning-layout {
+    grid-template-columns: 1fr;
+  }
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

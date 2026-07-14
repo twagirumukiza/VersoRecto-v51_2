@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verso Recto — V35 Lab Online</title>
+  <meta name="description" content="Laboratoire multijoueur en ligne Firebase pour Verso Recto." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="online-lab.css" />
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script defer src="online-lab.js"></script>
+</head>
+<body class="online-lab-body">
+  <header class="app-header beta-header">
+    <div class="brand-block">
+      <p class="eyebrow">V35 — laboratoire multijoueur Firebase</p>
+      <h1>Verso Recto — Lab Online</h1>
+      <p class="subtitle">Page séparée pour tester le multijoueur sans casser la version stable.</p>
+      <div class="hero-tags">
+        <span>2 joueurs humains</span>
+        <span>Firebase Realtime Database</span>
+        <span>Code de partie privé</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a class="ghost-link" href="index.html">Retour au jeu stable</a>
+    </div>
+  </header>
+
+  <main class="online-lab-layout">
+    <section class="panel online-lab-panel">
+      <div class="panel-heading">
+        <p class="section-kicker">Labo en ligne</p>
+        <h2>Créer ou rejoindre une partie</h2>
+      </div>
+
+      <p class="muted">
+        Cette page teste seulement le multijoueur à distance. Le jeu principal reste dans <strong>index.html</strong>.
+      </p>
+
+      <label class="field">
+        <span>Ton nom</span>
+        <input id="playerName" value="Joueur" />
+      </label>
+
+      <div class="online-lab-actions">
+        <button id="createGame" class="primary" type="button">Créer une partie</button>
+      </div>
+
+      <p id="createdCode" class="online-code" hidden>Code : <strong>—</strong></p>
+
+      <label class="field">
+        <span>Code à rejoindre</span>
+        <input id="joinCode" placeholder="Ex. VR-4821" />
+      </label>
+
+      <div class="online-lab-actions">
+        <button id="joinGame" class="secondary" type="button">Rejoindre</button>
+        <button id="leaveGame" class="secondary danger-button" type="button" disabled>Quitter</button>
+      </div>
+
+      <p id="onlineStatus" class="online-status">Prêt. Crée une partie ou rejoins un code existant.</p>
+
+      <div class="quick-help">
+        <h3>Principe du test</h3>
+        <p>Joueur 1 joue les jaunes. Joueur 2 joue les rouges. Les bleus et noirs sont neutres.</p>
+      </div>
+    </section>
+
+    <section class="game-area online-lab-game">
+      <div class="game-toolbar">
+        <div class="status-card">
+          <span class="status-label">Statut</span>
+          <strong id="gameStatus">Aucune partie en ligne.</strong>
+        </div>
+        <div class="toolbar-actions">
+          <button id="copyCode" class="secondary" type="button" disabled>Copier le code</button>
+          <button id="resetSelection" class="secondary" type="button">Annuler</button>
+        </div>
+      </div>
+
+      <div class="board-shell">
+        <svg id="board" class="board-svg" viewBox="0 0 600 600" role="img" aria-label="Plateau Verso Recto en ligne"></svg>
+      </div>
+    </section>
+
+    <aside class="panel side-panel online-lab-side">
+      <h3>Partie</h3>
+      <div id="roomInfo" class="turn-order muted">Aucune partie.</div>
+
+      <h3>Tour</h3>
+      <div id="turnInfo" class="active-player">—</div>
+
+      <h3>Classement / Victoire</h3>
+      <ol id="rankingList" class="ranking-list">
+        <li class="muted">Aucun gagnant pour l’instant.</li>
+      </ol>
+
+      <h3>Historique</h3>
+      <ol id="moveHistory" class="move-history"></ol>
+    </aside>
+  </main>
+</body>
+</html>

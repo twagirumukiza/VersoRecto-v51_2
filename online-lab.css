@@ -1,0 +1,69 @@
+
+.online-lab-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr) minmax(240px, 320px);
+  gap: 20px;
+  padding: 20px;
+}
+
+.online-lab-panel,
+.online-lab-side {
+  align-self: start;
+}
+
+.online-lab-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 14px;
+}
+
+.online-status,
+.online-code {
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+
+.online-status {
+  background: rgba(255, 235, 190, .7);
+  color: #6b4e2e;
+  font-weight: 700;
+}
+
+.online-code {
+  background: #fff8e8;
+  border: 2px dashed rgba(122, 80, 30, .45);
+}
+
+.online-code strong {
+  font-size: 1.35rem;
+  letter-spacing: .1em;
+}
+
+.online-lab-game .board-shell {
+  min-height: min(72vh, 740px);
+}
+
+.cell.remote-legal {
+  fill: rgba(255, 220, 120, .45);
+  stroke-width: 2.8;
+}
+
+.online-lab-body .piece.my-turn {
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .online-lab-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .online-lab-game {
+    order: 2;
+  }
+
+  .online-lab-side {
+    order: 3;
+  }
+}

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verso Recto — V45 Champion Lab</title>
+  <meta name="description" content="Laboratoire d’auto-jeu et d’optimisation évolutionnaire pour l’IA de Verso Recto." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="learning-v41.css" />
+  <script defer src="learning-v41.js"></script>
+</head>
+<body class="learning-body">
+  <header class="app-header beta-header">
+    <div class="brand-block">
+      <p class="eyebrow">V41 — Learning Lab</p>
+      <h1>Verso Recto — Laboratoire d’apprentissage</h1>
+      <p class="subtitle">Auto-jeu, collecte de données et optimisation évolutionnaire des poids de l’IA.</p>
+      <div class="hero-tags">
+        <span>IA contre IA</span>
+        <span>Évolution des poids</span>
+        <span>Export JSON</span>
+        <span>Champion permanent</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a class="ghost-link" href="index.html">Retour au jeu V50</a>
+    </div>
+  </header>
+
+  <main class="learning-layout">
+    <section class="panel controls-panel">
+      <div class="panel-heading">
+        <p class="section-kicker">Entraînement hors ligne</p>
+        <h2>Paramètres</h2>
+      </div>
+
+      <label class="field">
+        <span>Nombre de générations</span>
+        <input id="generations" type="number" min="1" max="30" value="5" />
+      </label>
+
+      <label class="field">
+        <span>Population de variantes</span>
+        <input id="populationSize" type="number" min="4" max="30" value="8" />
+      </label>
+
+      <label class="field">
+        <span>Parties par variante</span>
+        <input id="gamesPerCandidate" type="number" min="2" max="30" value="4" />
+      </label>
+
+      <label class="field">
+        <span>Limite de coups par partie</span>
+        <input id="maxTurns" type="number" min="40" max="600" value="180" />
+      </label>
+
+      <label class="field">
+        <span>Taux de mutation</span>
+        <input id="mutationRate" type="number" min="0.01" max="0.8" step="0.01" value="0.15" />
+      </label>
+
+      <div class="lab-actions">
+        <button id="startTraining" class="primary" type="button">Lancer l’entraînement</button>
+        <button id="stopTraining" class="secondary" type="button" disabled>Arrêter</button>
+        <button id="runSample" class="secondary" type="button">Partie témoin</button>
+      </div>
+
+      <div class="lab-actions">
+        <button id="exportDataset" class="secondary" type="button" disabled>Exporter les données</button>
+        <button id="exportWeights" class="secondary" type="button" disabled>Exporter les poids</button>
+        <button id="clearData" class="secondary danger-button" type="button">Effacer</button>
+      </div>
+
+      <p id="labStatus" class="lab-status">Prêt. Aucun entraînement lancé.</p>
+
+      <div class="quick-help">
+        <h3>Ce que fait réellement cette V41</h3>
+        <p>Elle ne réécrit pas automatiquement l’IA V40. Elle fait jouer des variantes de poids entre elles, mesure leurs résultats, puis exporte la meilleure configuration pour validation.</p>
+      </div>
+    </section>
+
+    <section class="panel results-panel">
+      <div class="panel-heading">
+        <p class="section-kicker">Progression</p>
+        <h2>Résultats de l’apprentissage</h2>
+      </div>
+
+      <div class="metrics-grid">
+        <article><span>Génération</span><strong id="generationMetric">0</strong></article>
+        <article><span>Parties simulées</span><strong id="gamesMetric">0</strong></article>
+        <article><span>Positions enregistrées</span><strong id="positionsMetric">0</strong></article>
+        <article><span>Meilleur score</span><strong id="bestScoreMetric">—</strong></article>
+      </div>
+
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+
+      <h3>Meilleurs poids actuels</h3>
+      <pre id="bestWeights" class="weights-box">Aucun résultat.</pre>
+
+      <h3>Historique des générations</h3>
+      <div class="table-wrap">
+        <table class="learning-table">
+          <thead>
+            <tr><th>Génération</th><th>Score</th><th>Victoires</th><th>Nuls</th><th>Coups moyens</th></tr>
+          </thead>
+          <tbody id="generationHistory">
+            <tr><td colspan="5" class="muted">Aucune donnée.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="panel sample-panel">
+      <h3>Dernière partie témoin</h3>
+      <div id="sampleSummary" class="sample-summary muted">Aucune partie témoin.</div>
+
+      <h3>Dernières décisions</h3>
+      <ol id="decisionLog" class="move-history"></ol>
+
+      <h3>Caractéristiques collectées</h3>
+      <ul class="feature-list">
+        <li>nombre de groupes ;</li>
+        <li>taille du plus grand groupe ;</li>
+        <li>adjacences par côté ;</li>
+        <li>majorité recto/verso ;</li>
+        <li>distance moyenne ;</li>
+        <li>mobilité ;</li>
+        <li>pions isolés ;</li>
+        <li>progression vers la victoire.</li>
+      </ul>
+    </aside>
+  </main>
+</body>
+</html>
